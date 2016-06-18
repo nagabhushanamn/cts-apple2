@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>App</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">JS - learn</div>
+
+	<div class="jumbotron">Welcome to Web-World</div>
+	<button class="btn btn-danger">Hide</button>
+	<button class="btn btn-success">Show</button>
+	
+	<hr/>
+	
+	Name :<input id="nameField">
+	      <button id="resetBtn" class="btn btn-primary">reset</button>
+	      <button id="getNameBtn" class="btn btn-primary">get-Name</button>
+	      <hr/>
+	Hello <span class="badge">(name)</span>
+	
+	<hr/>
+	
+	<div class="jumbotron">
+	Name :<input data-bind="value:name">
+	      <button  class="btn btn-primary" data-bind="click:reset">reset</button>
+	      <button  class="btn btn-primary" data-bind="click:getName">get-Name</button>
+	      <hr/>
+	Hello <span class="badge" data-bind="text:name">(name)</span>
+	
+	</div>
+	
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/knockout/dist/knockout.js"></script>
+	<script src="js/app.js"></script>
+	
+</body>
+</html>

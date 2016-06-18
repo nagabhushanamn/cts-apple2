@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body ng-app="demo">
+
+	<div class="container well" ng-controller="UserController as uc">
+	
+		<div class="page-header">data-binding</div>
+		
+		Name : <input type="text" id="uname" ng-model="uc.uname"> 
+		       <button class="btn btn-primary" id="unameBtn" ng-click="uc.getName()">get-name</button>
+		       <button class="btn btn-primary" id="resetBtn" ng-click="uc.resetName()">reset</button>
+		<hr/>
+		
+		Hello:<span class="badge" id="unameSpan">{{uc.name}}</span>
+			
+	</div>
+	
+	
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.controller('UserController',function(){
+			this.uname='';
+			this.getName=function(){
+				// ...
+				this.uname='Nag';
+			};
+			this.resetName=function(){
+				this.uname='';
+			}
+		});
+	</script>
+
+</body>
+</html>

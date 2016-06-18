@@ -1,0 +1,21 @@
+{
+  "name": "App",
+  "authors": [
+    "nagabhushanamn <nagabhushanamn@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "knockout": "^3.4.0"
+  }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container">
+	
+		<div class="page-header">data-binding</div>
+		
+		Name : <input type="text" id="uname"> 
+		       <button class="btn btn-primary" id="unameBtn">get-name</button>
+		       <button class="btn btn-primary" id="resetBtn">reset</button>
+		<hr/>
+		
+		Hello:<span class="badge" id="unameSpan">(name)</span>
+			
+	</div>
+	
+	
+	<script type="text/javascript">
+	
+	var unameEle;
+	var unameBtnEle;
+	var resetBtn;
+	var unameSpan;
+	
+	var uname='';
+
+	unameEle=document.querySelector('#uname');
+	unameBtnEle=document.querySelector('#unameBtn');
+	resetBtn=document.querySelector('#resetBtn');
+	unameSpan=document.querySelector('#unameSpan');
+	
+	unameEle.addEventListener('keyup', function(e) {
+		uname=this.value;	
+		digestLoop();
+	});
+	unameBtnEle.addEventListener('click', function(e) {
+		// load name from server-side
+		uname='Nag'
+		digestLoop();
+	});
+	resetBtn.addEventListener('click', function(e) {
+		// load name from server-side
+		uname=''
+		digestLoop();
+	});
+	
+	function digestLoop(){
+		unameSpan.innerHTML=uname;
+		unameEle.value=uname;
+	}
+	
+	
+	</script>
+
+</body>
+</html>

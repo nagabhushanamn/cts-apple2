@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 15px;
+margin: 10px;
+}
+</style>
+</head>
+<body class="container">
+
+	<div class="page-header">NG scope(s)</div>
+
+	<div ng-app="demo">
+		<span class="badge">{{color}}</span>
+		<button ng-click="changeColor()">change-color</button>
+		
+		<div ng-controller="ColorController">
+			<span class="badge">{{color}}</span>
+			<span class="badge">{{ranbow}}</span>
+			<button ng-click="changeColor()">change-color</button>
+			<div ng-controller="PaintController">
+				<span class="badge">{{color}}</span>
+				<span class="badge">{{ranbow}}</span>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+	
+	
+	
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.run(function($rootScope) {
+			$rootScope.color="red";
+			$rootScope.changeColor=function(){
+				console.log('changing $rootScope.color');
+				$rootScope.color="green";
+			}
+		});
+		
+		mod.controller('ColorController',function($scope){
+			//..
+			$scope.color='blue';
+			$scope.ranbow='VIBGYOR';
+			$scope.changeColor=function(){
+				$scope.$parent.color='green';
+				$scope.color='yellow';
+			}
+		});
+		
+		mod.controller('PaintController',function($scope){
+		
+		});
+		
+		
+	</script>
+
+</body>
+</html>

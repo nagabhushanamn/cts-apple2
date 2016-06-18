@@ -1,0 +1,197 @@
+
+
+
+  JS
+  -----
+  
+  
+  when loading initial JS , 
+  
+  JS runtime will create 'global execution-context'
+  
+  'Global Execution Context'
+  
+     --> global-object
+     
+         browser --> window
+         NodeJS  --> global
+         
+     --> 'this' will get initialized to 'global-obj'
+     
+     
+     this === global-obj
+     
+    -------------------------------------------------   
+    
+    'Global Execution Context'
+    --------------------------
+    
+    phase-1 : context-creation
+    
+    --> all variables declared any-where in JS file , hoisted (lifting-up) to top of context
+        with default value ( undefined )
+    --> all global var , will be assigned as properties of globa-obj.
+    
+    
+    phase-2 : context-execution
+    
+    
+    -------------------------------------------------
+    
+    every func invocation , will create new child-execution-context
+    
+    --------------------------------------------------
+    
+    
+    
+    what js can do on HTML-page in browser ?
+    
+    
+    JS-lang using Web-APIs can bring any dynamic functionality
+    to HTML-page
+    
+    e,g  Web APIs
+    
+    
+         DOM , XHR , Timer , etc...
+         
+         
+         most WEB APIs based on w3c standards
+         
+         Web APIs are implemented by browser-vendors 
+         , they abstract them as JS-objects and functions.
+    
+    
+     using DOM API
+     
+     --> can create,get,update,delete HTML elements
+     --> can change element's attribute values
+     --> can change element's style
+     --> can change element's text content.
+     --> can listen events on HTML element's
+	 --> can create rich UI components to HTML page.
+
+    using XHR API
+    
+    --> can communicate with server-side programs async,
+        and results in existing page ( AJAX )
+        
+    using Timer API
+    
+    -> timeout,interval ...
+    
+    HTML-5 Web APIs
+    
+    1. canvas
+    2. audio & video
+    3. storage API
+       sessionStorage
+       localStorage
+       IndexdDB
+    4. webworker
+    5. Geo
+    
+    6. WebGL     
+        	      
+     
+    
+    
+    
+    ----------------------------------------
+    
+    
+    
+    JS is
+    
+    --> single-threaded lang
+    --> supports concurrency
+    --> Non-Blocking when IO happening
+    
+    
+    
+    e.g chrome browser
+    
+        a. JS engine ( v8 )
+        
+           call-stack
+           heap
+           
+        b. Web APIs
+        c. callback/message queue
+        d. Event-Loop
+        
+        -------------------------------
+        
+        
+        
+        plain JS ---> your-code + Web APIs
+        
+        
+        Limitations/Complexity with plain-JS
+        
+        
+        --> browser compatibility
+        --> too much code for simple-operations
+        --> need to consider performance-factors.
+        --> code organization difficult.
+        
+        
+        
+        Soln:
+        
+        using best JS-libraries
+        
+        --> jQuery
+        
+        how to use jQuery ?
+        
+        var jqCollnObj=jQuery('selector',context);
+        
+        
+        ----------------------------------
+        
+        Limitations with jQuery
+        
+        --> it is low-level library ( works close to DOM )
+        --> data-binding is difficut.
+        --> no soln to separate view from data and functions.
+        
+        
+        JS F.Ws ( MVC and MVVM f.w )
+        
+        --> backbone
+        --> YUI  
+        --> Angular
+        --> Knockout
+        
+        
+        --> DOJO toolkit
+        --> EXTJS
+        
+        etc.....
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
