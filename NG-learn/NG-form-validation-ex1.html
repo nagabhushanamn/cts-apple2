@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="container" ng-app="demo">
+	
+		<div class="page-header">data-binding</div>
+		
+		<div class="row">
+			<div class="col-xs-6 col-sm-6">
+			
+				<form novalidate name="userForm">
+				
+					<div class="form-group" 
+					     ng-class="{
+					     'has-error':userForm.email.$invalid&&userForm.email.$dirty&&userForm.$submitted
+					     }">
+						<input type="email" 
+						       name="email" 
+						       ng-model="user.email"
+						       required="required"
+						       placeholder="enter email"
+						       class="form-control" 
+						       autofocus >
+					    <div class="help-block" 
+					         ng-show="userForm.email.$error.required&&userForm.email.$dirty">
+					         Email Required
+					     </div>	
+					     <div class="help-block" 
+					         ng-show="userForm.email.$error.email&&userForm.email.$dirty">
+					         Invalid Email 
+					     </div>	        
+					</div>
+					<div class="form-group">
+						<input type="password"
+						       name="pword" 
+						       ng-model="user.password"
+						       placeholder="enter password"
+						       class="form-control">
+					</div>
+					<div class="form-group">
+						<input type="text" 
+						       name="name" 
+						       ng-model="user.name"
+						       placeholder="enter name"
+						       class="form-control">
+					</div>
+					<div class="form-group"
+					 ng-class="{
+					     'has-error':userForm.mobile.$invalid&&userForm.mobile.$dirty
+					     }">
+						<input type="number" 
+							   name="mobile" 
+							   required="required"
+							   ng-model="user.mobile"
+							   pattern="\d{10}"
+							   placeholder="enter mobile"
+							   class="form-control">
+						<div class="help-block" 
+					         ng-show="userForm.mobile.$error.pattern&&userForm.mobile.$dirty">
+					         Invalid Mobile
+					     </div>
+					</div>
+					<div class="form-group">
+						<input type="number"
+							   placeholder="enter age"
+							    ng-model="user.age"	
+						       min="18"
+						       max="64"
+						       name="age" class="form-control">
+					</div>
+					<div class="form-group">
+						<select name="gender" class="form-control">
+							<option>select gender</option>
+						</select>
+					</div>
+					
+					<button type="submit" class="btn btn-danger">Register</button>
+					
+				</form>
+				
+				<pre>
+					{{userForm.email|json}}
+				</pre>
+				
+			</div>
+		</div>
+		
+			
+	</div>
+	
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+	var mod=angular.module('demo', []);
+	</script>
+	
+
+</body>
+</html>

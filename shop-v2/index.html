@@ -34,7 +34,7 @@
 		<div ng-controller="StoreController as sc" class="list-group">
 		
 			<div ng-hide="product.notAvailable"
-			     ng-repeat="product in sc.products | limitTo:10:0"
+			     data-ng-repeat="product in sc.products | limitTo:10:0"
 			     class="list-group-item">
 				
 				<div class="row">
@@ -61,7 +61,42 @@
 								<div class="panel-body">Not yet</div>
 							</div>
 							<div class="panel" ng-show="isTabSelected(3)">
-								<div class="panel-body">None yet</div>
+								<div class="panel-body">
+								
+									<blockquote ng-repeat="review in product.reviews">
+										<h5>{{review.stars}} <small>{{review.author}}</small></h5>
+										<p>{{review.comment}}</p>
+									</blockquote>
+									
+									<form name="reviewForm" 
+									      ng-controller="ReviewFormController"
+									      ng-submit="addNewReview(product)">
+									
+										<div class="form-group">
+											<label>stars</label>
+											<select ng-options="n for n in [1,2,3,4,5]" 
+											        class="form-control"
+											         ng-model="newReview.stars">
+											</select>
+										</div>
+										<div class="form-group">
+											<label>author</label>
+											<input type="text" 
+											       class="form-control"
+											       ng-model="newReview.author">
+										</div>
+										<div class="form-group">
+											<label>comment</label>
+											<textarea ng-model="newReview.comment"
+											          class="form-control">
+											</textarea>
+										</div>
+										
+										<button type="submit" class="btn btn-primary">submit</button>
+									
+									</form>
+								
+								</div>
 							</div>
 						</section>
 					

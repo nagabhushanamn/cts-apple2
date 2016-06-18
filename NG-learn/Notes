@@ -1,0 +1,29 @@
+
+
+
+  NG- lifecycle
+  --------------
+  
+  
+   a. compilation-phase
+   
+      for every directive/expression, angular will register 'watchers' 
+      to do data-binding.
+      
+      who will execute watcher(s)?
+      
+      "digest-loop"
+      
+      
+      when model change ? , digest-loop will execute 'watchers'
+      
+      -----------------------------------------------
+      
+      we can also register custom-watcher(s) in angular-app.
+      
+      -------------------------------------------------
+      
+      
+      
+      
+      

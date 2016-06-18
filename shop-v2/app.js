@@ -19,7 +19,11 @@
 		images:[
 		        {thumb:'images/Laptop.png',full:''},
 		        {thumb:'images/Laptop.png',full:''}
-		        ]
+		        ],
+		reviews:[
+		         {stars:5,author:'nag@gmail.com',comment:'Goood...'},
+		         {stars:3,author:'indu@gmail.com',comment:'too costly...'}
+		         ]        
 	}, {
 		name : 'Mobile',
 		price : 19000,
@@ -31,7 +35,11 @@
 		images:[
 		        {thumb:'images/Mobile.png',full:''},
 		        {thumb:'images/Mobile.png',full:''}
-		        ]
+		        ],
+        reviews:[
+		         {stars:5,author:'nag@gmail.com',comment:'Goood...'},
+		         {stars:3,author:'indu@gmail.com',comment:'too costly...'}
+		         ]         
 	} ];
 	
 	// -----------------------------------------------------
@@ -47,6 +55,18 @@
 		};
 		$scope.isTabSelected=function(index){
 			return $scope.tab===index;
+		};
+	});
+	mod.controller('ReviewFormController', function($scope) {
+		$scope.newReview={};
+		$scope.addNewReview=function(product){
+			
+			// if valid
+			
+			// send form-data to server-side with product.id ( future task )
+			
+			product.reviews.push($scope.newReview);
+			$scope.newReview={};
 		};
 	});
 	

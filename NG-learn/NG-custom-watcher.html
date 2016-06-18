@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG-data-binding & custom-watcher</div>
+	
+	
+
+	<div class="container" ng-controller="UserController as uc">
+		<select ng-options="n for n in [5,10,15,20]" ng-model="userCount"></select>
+		<input ng-model="userCount">
+		<table class="table table-bordered table-condensed">
+			<tr ng-repeat="user in users">
+				<td>{{user.fname}}</td>
+				<td>{{user.lname}}</td>
+			</tr>
+		</table>
+			
+	</div>
+	
+	
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.controller('UserController',function($scope,$http){
+			$scope.userCount=5;
+			$scope.$watch('userCount',function(newCount,oldCount){
+				loadUsers(newCount);
+			});
+			function loadUsers(count){
+				$http.jsonp(`http://www.filltext.com/?callback=JSON_CALLBACK&rows=${count}&fname={firstName}&lname={lastName}`).
+			    success(function (data) {
+			        $scope.users = data
+			    });
+			}
+			
+		});
+	</script>
+
+</body>
+</html>

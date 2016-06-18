@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container" ng-app="demo">
+
+	<div class="page-header">NG-data-binding-depth</div>
+	
+	{{compName}}
+
+	<div class="container well" ng-controller="UserController as uc">
+	
+		<div class="page-header">data-binding</div>
+		
+		Name : <input type="text" id="uname" ng-model="uname"> <hr/>
+		       <button class="btn btn-primary" id="unameBtn" ng-click="getName()">get-name ( ng-click )</button>
+			   <button class="btn btn-primary" onclick="getName()">get-name ( on-click )</button>
+		       <button class="btn btn-primary" id="resetBtn" ng-click="resetName()">reset</button>
+		<hr/>
+		
+		Hello:<span class="badge" id="unameSpan">{{uname}}</span>
+			
+	</div>
+	
+	
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript">
+		var mod=angular.module('demo', []);
+		mod.controller('UserController',function($scope,$rootScope){
+			$scope.uname='';
+			
+			$scope.getName=function(){
+				// ...
+				$scope.uname='Nag';
+			};
+			
+			window.getName=function(){
+				console.log('getting name...');
+				$rootScope.compName="CTS";
+				$scope.uname="Nagabhushanam";
+				//$scope.$apply();
+				$scope.$digest();
+			};
+			
+			$scope.resetName=function(){
+				$scope.uname='';
+			}
+			
+			// custom-watcher
+			$scope.$watch('uname',function(newVal,oldVal){
+				console.log('$scope.uname custom-watcher executing....');
+				console.log(newVal +" - "+oldVal);
+			});
+			
+			
+		});
+	</script>
+
+</body>
+</html>
