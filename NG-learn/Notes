@@ -66,7 +66,47 @@
        
     ------------------------------------------------------------------    
     
+    reference:
     
+    https://www.toptal.com/angular-js/angular-js-demystifying-directives
+    
+    ------------------------------------------------------------------    
+    
+    
+    
+    Angular-components
+    
+    
+    --> controller   : View-behavior
+    --> filters      : filtering on model properties
+    --> directives   : DOM Manipulations in declarative-way
+    
+    --> services     : angular's business-logic code
+    
+                        e.g
+                        
+                        --> communicating with server-side
+                        --> logging
+                        --> routing
+                        --> security
+                        --> caching..
+                        
+                        etc........
+    
+    
+    -------------------------------------------------------------------
+    
+    
+    how to create 'service' components ?
+    
+    rule:
+    -----
+    
+    
+    Provider's  --> factory-method()  ----> service-comp
+    
+    
+    -------------------------------------------------------------------
     
     
     

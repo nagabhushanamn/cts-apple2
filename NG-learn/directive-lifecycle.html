@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+	
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 15px;
+margin: 15px;
+}
+</style>	
+	
+</head>
+<body>
+
+	<div class="container" ng-app="demo">
+
+		<div class="page-header">directive - lifecycle</div>
+
+		<div ng-controller="DemoController">
+			<button ng-click="doSomething()"> click </button>
+			
+			<div dir1>
+			</div>
+			
+		</div>	
+
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		
+		
+		mod.controller('DemoController',function($scope){
+			$scope.doSomething=function(){
+				console.log('DemoController:doSomething..');
+			}
+		});
+
+		mod.directive('dir1', function() {
+			return {
+				scope:false,
+				template:'<div> <button ng-click="doSomething()"> click </button> </div>',
+				//transclude:true,
+				compile : function(ele, attr) {
+					// DOM tranformation....
+					console.log('dir1 compile...');
+					
+					ele.append('dir1 directive');
+					//ele.css('border', '1px solid green');
+					ele.css('padding', '10px');
+
+					return {
+						pre : function(scope,ele,atr) {
+							// to initialize any scope properties before child-directive post-link func
+							console.log('dir1 pre-link..');
+							scope.name='Nag';
+						},
+						post : function(scope,ele,attr) {
+							// DOM Listeners after template has been cloned
+							console.log('dir1 post-link..');
+							/* scope.name='Nag'; */
+						}
+					};
+				},
+				controller : function($scope) {
+					// View behav...
+					console.log('dir1 controller..');
+					$scope.doSomething=function(){
+						console.log('dir1-controller:doSomething..');
+					}
+				}
+			};
+		});
+		
+		mod.directive('dir2', function() {
+			return {
+				scope:true,
+				template:'<div>Trainer : {{trainer}}</div>',
+				compile : function(ele, attr) {
+					// DOM tranformation....
+					console.log('dir2 compile...');
+					
+					//ele.append('dir2 directive');
+					//ele.css('border', '1px solid blue');
+					ele.css('padding', '10px');
+
+					return {
+						pre : function() {
+							// to initialize any scope properties before child-directive post-link func
+							console.log('dir2 pre-link..');
+						},
+						post : function(scope,ele,attr) {
+							// DOM Listeners after template has been cloned
+							console.log('dir2 post-link..');
+							scope.trainer=scope.name;
+						}
+					};
+				},
+				controller : function($scope) {
+					// View behav...
+					console.log('dir2 controller..');
+				}
+			};
+		});
+		
+	</script>
+
+
+</body>
+</html>

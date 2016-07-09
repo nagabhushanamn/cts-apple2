@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<div class="container" ng-app="demo">
+
+		<div class="page-header">NG - without service(s)</div>
+
+		<div class="well" ng-controller="HitController">
+			<button class="btn btn-sm btn-primary" ng-click="doHit()">Hit-1</button>
+			<span class="badge">{{count}}</span>
+		</div>
+		<div class="well" ng-controller="HitController">
+			<button class="btn btn-sm btn-primary" ng-click="doHit()">Hit-2</button>
+			<span class="badge">{{count}}</span>
+		</div>
+		<div class="well" ng-controller="KickController">
+			<button class="btn btn-sm btn-primary" ng-click="doKick()">Kck-1</button>
+			<span class="badge">{{count}}</span>
+		</div>
+
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		
+		mod.config(function(counterServiceProvider) {
+			console.log('demo module config-pahse');
+			counterServiceProvider.setInitialCount(100);
+		});
+
+		mod.controller('HitController', function($scope,counterService) {
+			console.log('New HitController instance created...');
+			$scope.count = counterService.getCount();
+			$scope.doHit = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+			}
+		})
+
+		mod.controller('KickController', function($scope,counterService) {
+			console.log('New KickController instance created...');
+			$scope.count = counterService.getCount();
+			$scope.doKick = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+			}
+		})
+
+		//--------------------------------------------------------
+
+		mod.provider('counterService', function() {
+			console.log('counterServiceProvider instance created....');
+			var count = 0;
+			
+			this.setInitialCount=function(newInitialCount){
+				console.log('setting new initial count');
+				count=newInitialCount;
+			}
+			
+			this.$get = function() {
+				console.log('counterServiceProvider-factory method called.. service instance created....');
+				var service = {
+					doCount : function() {
+						count++;
+					},
+					getCount : function() {
+						return count;
+					}
+				};
+				return service;
+			}
+		});
+	</script>
+
+
+</body>
+</html>
