@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 15px;
+	margin: 15px;
+}
+.ng-isolate-scope{
+border: 1px solid red;
+	padding: 15px;
+	margin: 15px;
+}
+</style>
+</head>
+<body>
+
+	<div class="container" ng-app="demo">
+
+		<div class="page-header">NG custom-directive - scope ( isolated-scope )</div>
+
+		<div ng-controller="ColorController">
+			
+			<input ng-model="color">
+			
+			<hr/>
+			<!-- <div hello-world my-color="{{color}}"></div> -->
+            <div hello-world my-color="color"></div>
+			
+		</div>
+	</div>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+
+		mod.controller('ColorController',function($scope){
+			$scope.color='yellow';
+		})
+		
+		mod.directive('helloWorld', function() {
+			return {
+				scope:{
+					//color:'@myColor',
+					color:'=myColor'
+				},
+				restrict : 'AECM',
+				//replace : true,
+				//template : '<h4>Angular World</h4>'
+				templateUrl:'templates/hello-world.html',
+				link:function(scope,ele,attr){
+					
+				// post linking-function  --> to register DOM Listeners
+				
+				//console.log('link func invoked...');
+				
+				//console.log(scope.color);
+				//scope.color='grey';
+				
+				//console.log(ele);  // jqLite ( minimul jquery lib for DOM manipulation )
+					
+				ele.on('mouseover',function(e){
+					ele.css('cursor','pointer');
+				});	
+				ele.on('click',function(e){
+					console.log('clicked...');
+					//ele.css('background-color','#def');
+					scope.color='#def';
+					scope.$apply();
+					//scope.$digest();
+				});
+			}
+			}
+		});
+	</script>
+
+
+</body>
+</html>

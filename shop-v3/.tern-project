@@ -1,0 +1,20 @@
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "outline": {
+      
+    },
+    "node": {
+      
+    },
+    "angular": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "ecma6",
+    "browser",
+    "jquery"
+  ]
+}

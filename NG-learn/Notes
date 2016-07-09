@@ -24,6 +24,68 @@
       -------------------------------------------------
       
       
+    ------------------------------------------------------------------
+    
+    directive :
+    
+    annotation/marker on HTML element ,
+    will execute  some JS-functionality for DOM manipulation.
+    
+    
+    adv:
+    
+    --> we can bring 'declarative' programming
+    
+    
+    ----------------------------------------------------------------
+    
+    how to create 'custom directives' ?
+    
+    mod.directive('name',function(){
+    return{
+    
+    }
+    });
+    
+    
+    -----------------------------------------------------------------
+    
+    custom-directives with scope
+    
+    1. directives in existing-scope
+    
+       e.g , ng-show,ng-hide , etc.....
+    
+    2. directives always creates 'child-scope'
+    
+       e.g ng-controller , ng-repeat , etc....
+       
+    3. directives creates 'isolated-scope'   
+    
+       e.g  ng-transclude
+       
+    ------------------------------------------------------------------    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
       
       
       

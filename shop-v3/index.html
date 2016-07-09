@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>shop</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand" href>shopIT</a>
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+				aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a><span class="glyphicon glyphicon-home"></span>Home</a></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<div ng-app="store" class="container">
+
+		<!-- View -->
+		<div ng-controller="StoreController as sc" class="list-group">
+		
+			<div ng-hide="product.notAvailable"
+			     data-ng-repeat="product in sc.products | limitTo:10:0"
+			     class="list-group-item">
+				
+				<div class="row">
+					<div class="col-xs-4 col-sm-3">
+						<product-image></product-image>
+					</div>
+					<div class="col-xs-8 col-sm-9">
+						<product-title></product-title>
+						<hr/>
+						<product-tabs></product-tabs>
+					
+					</div>
+				</div>
+					
+			</div>
+			
+		</div>
+
+
+	</div>
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-auto-validate/dist/jcs-auto-validate.js"></script>	
+
+	<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>

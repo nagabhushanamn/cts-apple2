@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<div class="container" ng-app="demo">
+
+		<div class="page-header">NG custom-directive basics</div>
+
+		<div data-hello-world></div>
+		<div hello:world></div>
+		<hr/>
+		<hello-world></hello-world>
+		<hr/>
+		<div class="hello-world"></div>
+		<hr/>
+		<!-- directive:hello-world -->		
+
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		
+		mod.directive('helloWorld', function(){
+			return{
+				restrict:'AECM',
+				replace:true,
+				template:'<h4>Angular World</h4>'
+			};
+		});
+		
+	</script>
+
+
+</body>
+</html>
