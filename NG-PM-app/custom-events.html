@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PM</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 15px;
+	margin: 10px;
+}
+</style>
+</head>
+<body ng-app="demo" class="container">
+
+
+	<div class="page-header">Angular custom-events</div>
+	
+	<span class="badge">{{message}}</span>
+	
+	<hr/>
+
+	<div ng-controller="One">
+	
+		<span class="badge">{{message}}</span>
+		
+		<div ng-controller="Two">
+			<button class="btn btn-primary" ng-click="doTwo()">One</button>
+			
+			<div ng-controller="Three">
+				<span class="badge">{{info}}</span>
+			</div>
+			
+		</div>
+		
+		<div ng-controller="Four">
+				<span class="badge">{{info}}</span>
+			</div>
+		
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demo', []);
+		
+		mod.run(function($rootScope) {
+			$rootScope.$on('message-event', function(e,data) {
+				$rootScope.message=data.msg;
+			});
+		});
+		
+		mod.controller('One', function($scope) {
+			$scope.$on('message-event', function(e,data) {
+				$scope.message=data.msg;
+				e.stopPropagation();
+				$scope.$broadcast('info-event',data);
+			});
+		});
+		mod.controller('Two', function($scope) {
+			$scope.doTwo=function(){
+				//console.log('One.......');
+				//$scope.message="One...";
+				$scope.$emit('message-event', {msg:'Two....'});
+				//$scope.$broadcast('message-event', {msg:'Two....'});
+			}
+		});
+		mod.controller('Three', function($scope) {
+			$scope.$on('message-event', function(e,data) {
+				$scope.info=data.msg;
+			});
+		});
+		mod.controller('Four', function($scope) {
+			$scope.$on('info-event', function(e,data) {
+				$scope.info=data.msg;
+			});
+		});
+	</script>
+
+</body>
+</html>
